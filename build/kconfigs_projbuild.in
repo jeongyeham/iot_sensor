@@ -1,0 +1,7 @@
+source "G:/Espressif/frameworks/esp-idf/components/bootloader/Kconfig.projbuild"
+source "G:/Espressif/frameworks/esp-idf/components/esp_app_format/Kconfig.projbuild"
+source "G:/Espressif/frameworks/esp-idf/components/esp_rom/Kconfig.projbuild"
+source "G:/Espressif/frameworks/esp-idf/components/esptool_py/Kconfig.projbuild"
+source "G:/Espressif/frameworks/esp-idf/components/partition_table/Kconfig.projbuild"
+source "C:/Users/jeong/Desktop/iot_sensor/main/Kconfig.projbuild"
+source "C:/Users/jeong/Desktop/iot_sensor/components/sensor_hub/Kconfig.projbuild"

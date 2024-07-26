@@ -1,0 +1,153 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 8,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 12,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "include/mbedtls",
+			"paths" : 
+			[
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/aes.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/aria.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/asn1.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/asn1write.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/base64.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/bignum.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/block_cipher.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/build_info.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/camellia.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/ccm.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/chacha20.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/chachapoly.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/check_config.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/cipher.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/cmac.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/compat-2.x.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/config_adjust_legacy_crypto.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/config_adjust_legacy_from_psa.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/config_adjust_psa_from_legacy.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/config_adjust_psa_superset_legacy.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/config_adjust_ssl.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/config_adjust_x509.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/config_psa.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/constant_time.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/ctr_drbg.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/debug.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/des.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/dhm.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/ecdh.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/ecdsa.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/ecjpake.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/ecp.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/entropy.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/error.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/gcm.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/hkdf.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/hmac_drbg.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/lms.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/mbedtls_config.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/md.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/md5.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/memory_buffer_alloc.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/net_sockets.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/nist_kw.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/oid.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/pem.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/pk.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/pkcs12.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/pkcs5.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/pkcs7.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/platform.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/platform_time.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/platform_util.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/poly1305.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/private_access.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/psa_util.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/ripemd160.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/rsa.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/sha1.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/sha256.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/sha3.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/sha512.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/ssl.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/ssl_cache.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/ssl_ciphersuites.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/ssl_cookie.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/ssl_ticket.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/threading.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/timing.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/version.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/x509.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/x509_crl.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/x509_crt.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/mbedtls/x509_csr.h"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include/psa",
+			"paths" : 
+			[
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/psa/build_info.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/psa/crypto.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_adjust_auto_enabled.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_adjust_config_key_pair_types.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_adjust_config_synonyms.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_builtin_composites.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_builtin_key_derivation.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_builtin_primitives.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_compat.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_config.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_driver_common.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_driver_contexts_composites.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_driver_contexts_key_derivation.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_driver_contexts_primitives.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_extra.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_legacy.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_platform.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_se_driver.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_sizes.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_struct.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_types.h",
+				"G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_values.h"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "esp-idf/mbedtls/mbedtls/include",
+		"source" : "G:/Espressif/frameworks/esp-idf/components/mbedtls/mbedtls/include"
+	}
+}
