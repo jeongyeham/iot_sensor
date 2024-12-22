@@ -1,5 +1,5 @@
 #common requires
-set(requires i2c_bus)
+set(requires i2c_bus driver)
 #imu sensor requires
 #list(APPEND requires mpu6050 lis2dh12)
 #humiture sensor requires
