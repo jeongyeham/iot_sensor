@@ -12,9 +12,8 @@ extern "C"
 {
 #endif
 
-#include "driver/i2c.h"
+#include "freertos/FreeRTOS.h"
 #include "i2c_bus.h"
-#include "esp_log.h"
 #include "math.h"
 
 typedef enum {
@@ -95,7 +94,7 @@ esp_err_t sht4x_soft_reset(sht4x_handle_t sensor);
 /**
  * @brief initialize sht4x with default configurations
  *
- * @param i2c_bus i2c bus handle the sensor will attached to
+ * @param handle i2c bus handle the sensor will be attached to
  * @return
  *     - ESP_OK Success
  *     - ESP_FAIL Fail
