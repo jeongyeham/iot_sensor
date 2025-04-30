@@ -52,3 +52,9 @@ Mkfile.old
 dkms.conf
 .idea/
 build/
+managed_components/
+/dependencies.lock
+/.run/
+/main/idf_component.yml
+/sdkconfig.old
+/sdkconfig
