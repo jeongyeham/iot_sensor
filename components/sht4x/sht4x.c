@@ -7,7 +7,8 @@
 #include <stdio.h>
 #include "i2c_bus.h"
 #include "esp_log.h"
-#include "esp_timer.h"
+#include "esp_system.h"
+#include "iot_sensor_hub.h"
 #include "sht4x.h"
 
 #define MEASURE_MODE  SHT4x_MEASURE_HPM
@@ -96,7 +97,7 @@ esp_err_t sht4x_get_single_shot(sht4x_handle_t sensor, sht4x_cmd_measure_t measu
     }
 
     uint8_t buff[6];
-    uint16_t tem= 0, hum = 0;
+    uint16_t tem = 0, hum = 0;
     static float Temperature = 0;
     static float Humidity = 0;
 
@@ -122,11 +123,10 @@ esp_err_t sht4x_get_single_shot(sht4x_handle_t sensor, sht4x_cmd_measure_t measu
     }
 
     tem = (((uint16_t) buff[0] << 8) | buff[1]);
-    Temperature = (175.0 * (float) tem / 65535.0 - 45.0);
+    Temperature = (175.0f * (float) tem / (float) ((2 << 15) - 1) - 45.0f);
     /*!< T = -45 + 175 * tem / (2^16-1), this temperature conversion formula is for Celsius °C */
-    //Temperature= (315.0*(float)tem/65535.0-49.0) ;     /*!< T = -49 + 315 * tem / (2^16-1), this temperature conversion formula is for Fahrenheit °F */
     hum = (((uint16_t) buff[3] << 8) | buff[4]);
-    Humidity = (125.0 * (float) hum / 65535.0 - 6.0); /*!< RH = -6 + 125 * hum / (2^16-1) */
+    Humidity = (125.0f * (float) hum / (float) ((2 << 15) - 1) - 6.0f); /*!< RH = -6 + 125 * hum / (2^16-1) */
 
     if ((Temperature >= -20) && (Temperature <= 125) && (Humidity >= 0) && (Humidity <= 100)) {
         *Tem_val = Temperature;
@@ -142,17 +142,17 @@ esp_err_t sht4x_soft_reset(sht4x_handle_t sensor) {
     return ret;
 }
 
-#ifdef CONFIG_SENSOR_HUMITURE_INCLUDED_SHT4X
+#ifdef CONFIG_SENSOR_INCLUDED_HUMITURE
 
 static sht4x_handle_t sht4x = NULL;
 static bool is_init = false;
 
-esp_err_t humiture_sht4x_init(i2c_bus_handle_t i2c_bus) {
+esp_err_t humiture_sht4x_init(i2c_bus_handle_t i2c_bus, uint8_t addr) {
     if (is_init || !i2c_bus) {
         return ESP_FAIL;
     }
 
-    sht4x = sht4x_create(i2c_bus, SHT4x_ADDR_AD);
+    sht4x = sht4x_create(i2c_bus, addr);
 
     if (!sht4x) {
         return ESP_FAIL;
@@ -220,5 +220,18 @@ esp_err_t humiture_sht4x_acquire_temperature(float *t) {
     *t = 0;
     return ESP_FAIL;
 }
+
+/**
+ *
+ */
+static humiture_impl_t sht4x_impl = {
+    .init = humiture_sht4x_init,
+    .deinit = humiture_sht4x_deinit,
+    .test = humiture_sht4x_test,
+    .acquire_humidity = humiture_sht4x_acquire_humidity,
+    .acquire_temperature = humiture_sht4x_acquire_temperature,
+};
+
+SENSOR_HUB_DETECT_FN(HUMITURE_ID, sht4x, &sht4x_impl);
 
 #endif

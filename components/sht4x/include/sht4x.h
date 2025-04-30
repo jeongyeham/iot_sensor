@@ -14,7 +14,6 @@ extern "C"
 
 #include "freertos/FreeRTOS.h"
 #include "i2c_bus.h"
-#include "math.h"
 
 typedef enum {
 
@@ -89,7 +88,7 @@ esp_err_t sht4x_get_single_shot(sht4x_handle_t sensor, sht4x_cmd_measure_t measu
 esp_err_t sht4x_soft_reset(sht4x_handle_t sensor);
 
 /***implements of humiture hal interface****/
-#ifdef CONFIG_SENSOR_HUMITURE_INCLUDED_SHT4X
+#ifdef CONFIG_SENSOR_INCLUDED_HUMITURE
 
 /**
  * @brief initialize sht4x with default configurations
@@ -99,7 +98,7 @@ esp_err_t sht4x_soft_reset(sht4x_handle_t sensor);
  *     - ESP_OK Success
  *     - ESP_FAIL Fail
  */
-esp_err_t humiture_sht4x_init(i2c_bus_handle_t handle);
+esp_err_t humiture_sht4x_init(i2c_bus_handle_t handle, uint8_t addr);
 
 /**
  * @brief de-initialize sht4x
