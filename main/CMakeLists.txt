@@ -1,3 +1,4 @@
-idf_component_register(SRCS "app_main.c"
+idf_component_register(SRCS "app_main.c" "freertos_task.c"
                     INCLUDE_DIRS "."
-                    REQUIRES )
+                    REQUIRES sensor_hub esp_lvgl_port lvgl)
+
