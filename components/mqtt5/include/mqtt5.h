@@ -5,7 +5,7 @@
 #ifndef IOT_SENSOR_MQTT5_H
 #define IOT_SENSOR_MQTT5_H
 
-void mqtt5_start_task(void *pvParameters);
+void mqtt5_app_config(void);
 
 
 #endif //IOT_SENSOR_MQTT5_H

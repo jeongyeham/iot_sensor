@@ -6,15 +6,11 @@
 
 #include <stdio.h>
 #include <stdint.h>
-#include <stddef.h>
 #include <string.h>
 #include "esp_system.h"
 #include "esp_event.h"
 #include "esp_log.h"
 #include "mqtt_client.h"
-
-
-static const int CONNECTED_BIT = BIT0;
 
 static const char *TAG = "mqtt5";
 
@@ -25,7 +21,7 @@ static void log_error_if_nonzero(const char *message, int error_code) {
 }
 
 static esp_mqtt5_user_property_item_t user_property_arr[] = {
-        {"board", "esp32"},
+        {"board", "esp32s3"},
         {"u",     "user"},
         {"p",     "password"}
 };
@@ -50,12 +46,6 @@ static esp_mqtt5_subscribe_property_config_t subscribe_property = {
         .share_name = "group1",
 };
 
-static esp_mqtt5_subscribe_property_config_t subscribe1_property = {
-        .subscribe_id = 25555,
-        .no_local_flag = true,
-        .retain_as_published_flag = false,
-        .retain_handle = 0,
-};
 
 static esp_mqtt5_unsubscribe_property_config_t unsubscribe_property = {
         .is_share_subscribe = true,
@@ -124,14 +114,6 @@ static void mqtt5_event_handler(void *handler_args, esp_event_base_t base, int32
             subscribe_property.user_property = NULL;
             ESP_LOGI(TAG, "sent subscribe successful, msg_id=%d", msg_id);
 
-            esp_mqtt5_client_set_user_property(&subscribe1_property.user_property, user_property_arr,
-                                               USE_PROPERTY_ARR_SIZE);
-            esp_mqtt5_client_set_subscribe_property(client, &subscribe1_property);
-            msg_id = esp_mqtt_client_subscribe(client, "/topic/qos1", 2);
-            esp_mqtt5_client_delete_user_property(subscribe1_property.user_property);
-            subscribe1_property.user_property = NULL;
-            ESP_LOGI(TAG, "sent subscribe successful, msg_id=%d", msg_id);
-
             esp_mqtt5_client_set_user_property(&unsubscribe_property.user_property, user_property_arr,
                                                USE_PROPERTY_ARR_SIZE);
             esp_mqtt5_client_set_unsubscribe_property(client, &unsubscribe_property);
@@ -195,7 +177,7 @@ static void mqtt5_event_handler(void *handler_args, esp_event_base_t base, int32
     }
 }
 
-static void mqtt5_app_config(void) {
+void mqtt5_app_config(void) {
     esp_mqtt5_connection_property_config_t connect_property = {
             .session_expiry_interval = 10,
             .maximum_packet_size = 1024,
@@ -241,32 +223,4 @@ static void mqtt5_app_config(void) {
     /* The last argument may be used to pass data to the event handler, in this example mqtt_event_handler */
     esp_mqtt_client_register_event(client, ESP_EVENT_ANY_ID, mqtt5_event_handler, NULL);
     esp_mqtt_client_start(client);
-}
-
-void mqtt5_start_task(void *pvParameters) {
-    EventGroupHandle_t s_wifi_event_group = (EventGroupHandle_t) pvParameters;
-
-    ESP_LOGI(TAG, "[APP] Startup..");
-    ESP_LOGI(TAG, "[APP] Free memory: %" PRIu32 " bytes", esp_get_free_heap_size());
-    ESP_LOGI(TAG, "[APP] IDF version: %s", esp_get_idf_version());
-
-    esp_log_level_set("*", ESP_LOG_INFO);
-    esp_log_level_set("mqtt_client", ESP_LOG_VERBOSE);
-    esp_log_level_set("mqtt_example", ESP_LOG_VERBOSE);
-    esp_log_level_set("transport_base", ESP_LOG_VERBOSE);
-    esp_log_level_set("esp-tls", ESP_LOG_VERBOSE);
-    esp_log_level_set("transport", ESP_LOG_VERBOSE);
-    esp_log_level_set("outbox", ESP_LOG_VERBOSE);
-    while (1) {
-        EventBits_t uxBits = xEventGroupWaitBits(s_wifi_event_group, CONNECTED_BIT, true, false,
-                                                 portMAX_DELAY);
-        if (likely(uxBits & CONNECTED_BIT)) {
-            ESP_LOGI(TAG, "WiFi Connected to ap");
-            mqtt5_app_config();
-            break;
-        }
-        ESP_LOGE(TAG, "Waiting Net");
-        vTaskDelay(pdMS_TO_TICKS(2000));
-    }
-    vTaskDelete(NULL);
 }
