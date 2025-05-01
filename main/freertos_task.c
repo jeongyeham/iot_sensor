@@ -14,6 +14,11 @@
 #include <stdio.h>
 #include "mqtt5.h"
 
+static const int CONNECTED_BIT = BIT0;
+static const int SC_DONE_BIT = BIT1;
+static const int NVS_STORED_BIT = BIT2;
+
+
 /////////////////////////////////////////////////////////////////////////SENSOR_HUB////////////////////////////////////////////////////////////////
 #define I2C_MASTER_SCL_IO 33      /*!< gpio number for I2C master clock */
 #define I2C_MASTER_SDA_IO 34      /*!< gpio number for I2C master data  */
@@ -139,6 +144,7 @@ void sensor_hub_task(void *pvParameters) {
 
 ////////////////////////////////////////////////////////////////////////////LVGL_UI///////////////////////////////////////////////////////
 
+static const char *lvgl_task_TAG = "lvgl_task";
 #define DISP_WIDTH 120
 #define DISP_HEIGHT 120
 
@@ -188,12 +194,15 @@ void lvgl_ui_task(void *pvParameters) {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////MQTT5///////////////////////////////////////////////////////
+
+static const char *mqtt5_task_TAG = "mqtt5_task";
+
 void mqtt5_start_task(void *pvParameters) {
   EventGroupHandle_t s_wifi_event_group = (EventGroupHandle_t) pvParameters;
 
-  ESP_LOGI(TAG, "[APP] Startup..");
-  ESP_LOGI(TAG, "[APP] Free memory: %" PRIu32 " bytes", esp_get_free_heap_size());
-  ESP_LOGI(TAG, "[APP] IDF version: %s", esp_get_idf_version());
+  ESP_LOGI(mqtt5_task_TAG, "[APP] Startup..");
+  ESP_LOGI(mqtt5_task_TAG, "[APP] Free memory: %" PRIu32 " bytes", esp_get_free_heap_size());
+  ESP_LOGI(mqtt5_task_TAG, "[APP] IDF version: %s", esp_get_idf_version());
 
   esp_log_level_set("*", ESP_LOG_INFO);
   esp_log_level_set("mqtt_client", ESP_LOG_VERBOSE);
@@ -206,11 +215,11 @@ void mqtt5_start_task(void *pvParameters) {
     EventBits_t uxBits = xEventGroupWaitBits(s_wifi_event_group, CONNECTED_BIT, true, false,
                                              portMAX_DELAY);
     if (likely(uxBits & CONNECTED_BIT)) {
-      ESP_LOGI(TAG, "WiFi Connected to ap");
+      ESP_LOGI(mqtt5_task_TAG, "WiFi Connected to ap");
       mqtt5_app_config();
       break;
     }
-    ESP_LOGE(TAG, "Waiting Net");
+    ESP_LOGE(mqtt5_task_TAG, "Waiting Net");
     vTaskDelay(pdMS_TO_TICKS(2000));
   }
   vTaskDelete(NULL);
@@ -226,9 +235,6 @@ void mqtt5_start_task(void *pvParameters) {
 #include "esp_log.h"
 
 
-static const int CONNECTED_BIT = BIT0;
-static const int SC_DONE_BIT = BIT1;
-static const int NVS_STORED_BIT = BIT2;
 
 /*NVS_FLASH Configuration */
 static const char *NVS_Name_space = "wifi_data";
@@ -237,6 +243,8 @@ static nvs_handle_t wifi_nvs_handle;
 wifi_config_t *wifi_config_stored;
 
 static const char *TAG = "smart_config";
+
+void smart_config_task(void *pvParameters);
 
 static void event_handler(void *arg, esp_event_base_t event_base,
                           int32_t event_id, void *event_data) {
